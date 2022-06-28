@@ -1,0 +1,20 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    username: root
+    password: '123456'
+    url: jdbc:mysql://localhost:3306/twmall?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+#themeleaf
+thymeleaf:
+  #开发时关闭thymeleaf的缓存,保证每一个页面修改后都可以立马生效
+  #生产环境下,打开thymeleaf的缓存,提升执行效率
+  cache :  false
+  prefix: classpath:/templates/
+  suffix: .html
