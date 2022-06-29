@@ -8,6 +8,8 @@ import lombok.*;
 @Getter
 @Setter
 public class CarDetail {
+    private int pid;
+    private int gid;
     private String name;
     private String comment;
     private double price;

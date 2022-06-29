@@ -33,4 +33,9 @@ public class GoodsServiceImpl implements GoodsService {
 
         return gm.selectByTypeId(id);
     }
+
+    @Override
+    public Goods selectById(Integer id) {
+        return gm.selectById(id);
+    }
 }

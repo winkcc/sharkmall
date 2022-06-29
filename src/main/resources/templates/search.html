@@ -2,22 +2,17 @@
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="utf-8">
-		<title>商品详情</title>
-		<link rel="stylesheet" type="text/css" href="../static/css/site.css"
-		th:href="@{/css/site.css}"/>
-		<link rel="stylesheet" type="text/css" href="../static/css/goods.css"
-		th:href="@{/css/goods.css}"/>
+		<title>搜索</title>
 
 		<link rel="stylesheet" type="text/css" href="../static/css/site.css"
-			  th:href="@{/css/site.css}"/>
-		<link rel="stylesheet" type="text/css" href="../static/css/goods.css"
-			  th:href="@{/css/goods.css}"/>
-		<script type="text/javascript" th:src="@{/js/jquery-2.1.4.js}" src="../static/js/jquery-2.1.4.js"></script>
+			th:href='@{/css/site.css}'/>
+		<link rel="stylesheet" type="text/css" href="../static/css/search.css"
+			th:href='@{/css/search.css}'/>
 	</head>
 	<body>
 		<div class="header">
 
-<!--			一级头-->
+			<!--			一级头-->
 			<div class="nav clear">
 				<div class="container">
 					<!--k导航栏-->
@@ -79,7 +74,7 @@
 					</div>
 				</div>
 			</div>
-<!--			二级头-->
+			<!--			二级头-->
 			<div class="site-header">
 				<div class="container clear">
 					<!--            logo-->
@@ -103,53 +98,53 @@
 
 			</div>
 
+		</div>
 
+
+		<!-- 查询区域 -->
+		<div class="main">
+			<div class="crumbs">
+				<div class="container">
+					<a href="" th:href="@{/}" >首页</a>
+					>
+					<a href="">全部结果</a>
+				</div>
+			</div>
+
+			<div class="order">
+				<div class="container">
+					<ul class="clear">
+						<li class="active"><a href="">所有</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="goods container" >
+				<ul class="clear"  >
+					<li th:each="gs:${session.searchg}">
+						<a href="">
+							<div class="img">
+								<img src="img/phone.jpg" >
+							</div>
+							<h2 class="desc" th:text="${gs.getGoodsName()}" >商品名</h2>
+							<p class="price" th:text="${gs.getGoodsPrice()}" >商品价格</p>
+							<div class="thumbs">
+								<ul class="clear">
+									<li><img src="img/phone.jpg" ></li>
+									<li><img src="img/phone.jpg" ></li>
+									<li><img src="img/phone.jpg" ></li>
+								</ul>
+							</div>
+							<div class="flags">
+								<span>赠</span>
+								<span>加价购</span>
+							</div>
+						</a>
+					</li>
+				</ul>
+			</div>
 		</div>
 		
-
-		<!-- 详情 -->
-		<div class="goods">
-			<div class="container clear">
-
-				<div class="left">
-					<div class="big">
-<!--						商品图片-->
-						<img src="../static/img/big-phone.jpg" >
-					</div>
-				</div>
-
-				<div class="right">
-					<h1 th:text="${session.goods.goodsName}">商品名</h1>
-					<br><br><br><br>
-					<p class="desc" th:text="${session.goods.goodsComment}">商品评价</p>
-					<br>
-					<p class="self" >沙东自营</p>
-					<p class="price" th:text="${session.goods.goodsPrice}+'元'"></p>
-					<br><br><br><br><br>
-					<div class="line"></div>
-
-					<div class="btn" >
-						<button class="add-cart"  th:onclick="addgoods1()">加入购物车</button>
-
-						<a style="margin-top: 40px" th:href="@{/}" ><button class="add-cart"  >返回</button></a>
-					</div>
-					<br>
-
-				</div>
-			</div>
-		</div>
-
-		<br><br><br><br><br><br><br>
-		<div class="explain">
-			<div class="container">
-				<h2>价格说明</h2>
-				<p><b>划线价:</b>商品展示的划横线价格为参考价，该价格可能是商品首次上市销售价、品牌专柜标价、商品吊牌价或由品牌供应商提供的正品零售价(如厂商指导价、建议零售价等)或该商品在小米商城曾经肤示过的销售价;由于地区、时间的差异性和市场行情的波动，品牌专柜标价、商品吊牌价等可能会与您购物时展示的不一致，该价格<b>并非原价、仅供参考。</b></p>
-				<p><b>未划线价:</b>指商品的实时销售价格，其不因表述的差异改变性质。但商品具体结算价格可能因该商品参与的满减、预售、限时优惠等单个或多个活动，或者因使用优惠券、红包、米金等而发生变化，<b>最终请以订单结算页展示为准。</b></p>
-				<p><b>其他:</b>商品详情页(含主图)以图片或文字形式标注的到手价、券后价、众筹价、尝鲜价等价格可能是商品在使用优惠券或参与特定优惠活动或在特定时间段等情形下，由系统根据相应规则川计算得出的预估单品结算价格。<b>具体请以订单结算页面的标价、优惠条件或具体活动规则为准。</b></p>
-			</div>
-			
-		</div>
-
 		<!-- 底部 -->
 		<div class="site-footer">
 			<div class="container">
@@ -164,26 +159,22 @@
 				</div>
 			</div>
 		</div>
-
-
-		<script >
-			var gid='[[${session.goods.goodsId}]]';
-			var uid='[[${session.user.usId}]]';
-			console.log(gid);
-			console.log(uid);
-
-			var flag;
-			function addgoods1(){
-				alert("成功加入购物车!!!");
-				$.ajax({
-					url:"addgoods",
-					type:"post",
-					data:{uid:uid,gid:gid},
-
-				})
-			}
-
+		
+		<!-- 引入jQuery -->
+		<script type="text/javascript" th:src="@{/js/jquery-2.1.4.js}"></script>
+		<!-- 引入search.js -->
+		<script type="text/javascript" th:src="@{/js/search.js}"></script>
+		<!-- 获取参数 -->
+		<script type="text/javascript">
+			var goodsSortId = [[${param.goodsSortId==null ? 0 : param.goodsSortId}]];
+			var name = "[[${param.name==null ? '': param.name}]]";
+			
+			//异步搜索
+			searchGoods(name,goodsSortId);
+			
+			//加载一级分类
+			getFirstSort();
 		</script>
+		
 	</body>
-
 </html>

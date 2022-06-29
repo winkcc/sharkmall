@@ -14,7 +14,7 @@
     <div class="header clear">
         <div class="logo">
             <a href="">
-                <img src="../img/logo-shark.png">
+                <img th:href="@{/}" src="../img/logo-shark.png">
                 <span>鲨宝账号</span>
             </a>
         </div>
@@ -33,7 +33,7 @@
         <h2><a class="active" href="login.html"
                th:href="@{/user/login}">登录</a>
             <a href="reg.html" th:href="@{/user/reg}">注册</a></h2>
-        <input type="text" name="usUsername" placeholder="邮箱/手机号码/小米ID"/>
+        <input type="text" name="usUsername" placeholder="邮箱/手机号码/鲨鱼ID"/>
         <input type="password" name="usPassword" placeholder="密码"/>
         <div class="error" th:text="${error}"></div>
         <input type="submit" value="登录"/>

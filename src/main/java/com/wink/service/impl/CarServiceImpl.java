@@ -19,4 +19,9 @@ public class CarServiceImpl implements CarService {
 
         return cm.showByUserId(id);
     }
+
+    @Override
+    public Car updatenumCar(Integer uid, Integer pid) {
+        return cm.updatenumCar(uid, pid);
+    }
 }

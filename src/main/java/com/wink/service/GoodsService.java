@@ -13,4 +13,7 @@ public interface GoodsService {
     Goods selectByName(String name);
 
     List<Goods> selectTypeAll(Integer id);
+
+    Goods selectById(Integer id);
+
 }

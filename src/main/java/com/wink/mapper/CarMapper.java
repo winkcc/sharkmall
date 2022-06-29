@@ -13,4 +13,10 @@ public interface CarMapper extends BaseMapper<Car> {
 
     @Select("select * from tb_car where user_id=#{uid}")
     List<Car> showByUserId(@Param("uid") Integer id);
+
+    @Select("select * from tb_car where user_id=#{uid} and goods_id=#{pid}")
+    Car updatenumCar(@Param("uid") Integer id,@Param("pid")Integer pid);
+
+
+
 }

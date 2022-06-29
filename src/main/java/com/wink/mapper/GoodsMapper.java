@@ -18,4 +18,8 @@ public interface GoodsMapper extends BaseMapper<Goods> {
 
     @Select("select * from tb_goods where category_id=#{id}")
     List<Goods> selectByTypeId(@Param("id") Integer id);
+
+    @Select("select * from tb_goods where goods_name like CONCAT('%',#{name},'%')")
+    List<Goods> selectAllbyname(@Param("name") String name);
+
 }
