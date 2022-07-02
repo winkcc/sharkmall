@@ -106,7 +106,7 @@
         </div>
         <div class="goods-sorts">
             <ul>
-                <li><a href="javascript:;">手机<i class="mi-icon icon-right"></i></a>
+                <li><a href="javascript:;">游戏机<i class="mi-icon icon-right"></i></a>
                     <div class="children">
                         <ul class="left">
                             <li><a href="">
@@ -263,7 +263,7 @@
             </div>
             <div class="brick-box clear">
                 <div class="left brick-left-single">
-                    <a href=""><img src="img/brick-box-goods-1.webp"></a>
+                    <a href=""><img  src="img/brick-box-goods-1.webp"></a>
                 </div>
                 <div class="right">
                     <!--类型一-->
@@ -271,7 +271,7 @@
                         <li>
                             <a th:href="@{showgoods(id=${m.getGoodsId()})}" href="">
                                 <div class="img">
-                                    <img src="img/brick-box-goods-2.webp">
+                                    <img th:src="@{img/{imgName}.png(imgName=${m.getGoodsId()})}" src="img/brick-box-goods-2.webp">
                                 </div>
                                 <h3 class="title" th:text="${m.getGoodsName()}">商品名字</h3>
 
@@ -310,7 +310,7 @@
                         <li>
                             <a th:href="@{showgoods(id=${m.getGoodsId()})}" href="">
                                 <div class="img">
-                                    <img src="img/brick-box-goods-2.webp">
+                                    <img th:src="@{img/{img2}.png(img2=${m.getGoodsId()})}" src="img/4.png">
                                 </div>
                                 <h3 class="title" th:text="${m.getGoodsName()}">商品名字</h3>
 
